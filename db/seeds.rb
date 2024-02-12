@@ -4,7 +4,7 @@ User.delete_all
 PrivateMessage.delete_all
 Gossip.delete_all
 JoinTableGossipTag.delete_all
-Commentaire.delete_all
+Comment.delete_all
 Tag.delete_all
 #################
 
@@ -83,7 +83,7 @@ puts "Joins OK !"
 50.times do
   gossip = Gossip.all.shuffle.last
   user = User.all.shuffle.last
-  Commentaire.create(
+  Comment.create(
     content: Faker::Fantasy::Tolkien.poem,
     gossip_id: gossip.id,
     user_id: user.id
@@ -95,10 +95,10 @@ puts "Commentaires OK !"
 #Create Likes
 20.times do
   gossip = Gossip.all.shuffle.last
-  commentaire = Commentaire.all.shuffle.last
+  commentaire = Comment.all.shuffle.last
   Like.create(
     gossip_id: gossip.id,
-    commentaire_id: commentaire.id,
+    Poly_comment_id: commentaire.id,
   )
 end
 puts "Likes OK !"
@@ -106,12 +106,11 @@ puts "Likes OK !"
 
 #Create Comment of Comment
 20.times do
-  commentaire = Commentaire.all.shuffle.last
+  commentaire = Comment.all.shuffle.last
   user = User.all.shuffle.last
-  Commentaire.create(
+  PolyComment.create(
     content: Faker::Lorem.paragraph,
-    commentaire_id: commentaire.id,
-    user_id: user.id
+    commentable: commentaire,
   )
 end
 puts "Commentaires of Commentaires OK !"

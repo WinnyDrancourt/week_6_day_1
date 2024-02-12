@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_08_202523) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_12_134203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,19 +21,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_202523) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "commentaires", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.string "commentable_type", null: false
-    t.bigint "commentable_id", null: false
     t.bigint "user_id"
     t.bigint "gossip_id"
-    t.bigint "commentaire_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_commentaires_on_commentable"
-    t.index ["commentaire_id"], name: "index_commentaires_on_commentaire_id"
-    t.index ["gossip_id"], name: "index_commentaires_on_gossip_id"
-    t.index ["user_id"], name: "index_commentaires_on_user_id"
+    t.index ["gossip_id"], name: "index_comments_on_gossip_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "gossips", force: :cascade do |t|
@@ -56,11 +51,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_202523) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "gossip_id"
-    t.bigint "commentaire_id"
+    t.bigint "Poly_comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commentaire_id"], name: "index_likes_on_commentaire_id"
+    t.index ["Poly_comment_id"], name: "index_likes_on_Poly_comment_id"
     t.index ["gossip_id"], name: "index_likes_on_gossip_id"
+  end
+
+  create_table "poly_comments", force: :cascade do |t|
+    t.text "content"
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_poly_comments_on_commentable"
   end
 
   create_table "private_messages", force: :cascade do |t|
