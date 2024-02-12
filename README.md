@@ -1,27 +1,42 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# The Gossip Project
 
-Things you may want to cover:
+Welcome to this brand new version of The Gossip Project App.
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## Deployment
 
-* Database initialization
+To deploy this project run
 
-* How to run the test suite
+```bash
+    git clone git@github.com:WinnyDrancourt/week_6_day_1.git
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+    bundle install
+```
 
-* Deployment instructions
+```bash
+    rails db:create
+    rails db:migrate
+    rails db:seed
+```
 
-* ...
+**Run this command to initialize Bootstrap and JS**
+```bash
+    rails assets:precompile
+```
+```bash
+    rails s
+```
 
-Lexi
-Alex
+
+
+## Authors
+
+- [@alexiacabanel](https://www.github.com/alexiacabanel)
+- [@winnydrancourt](https://github.com/WinnyDrancourt)
+- [@evarellapucky](https://github.com/evarellapucky)
+
