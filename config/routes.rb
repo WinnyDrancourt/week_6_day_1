@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
   get '/user/:id', to: 'static#users'
-  get '/gossip', to: 'static#gossip'
+  get '/gossip/:id', to: 'static#gossip'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
