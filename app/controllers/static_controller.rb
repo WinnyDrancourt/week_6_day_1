@@ -15,4 +15,10 @@ class StaticController < ApplicationController
     @gossip_count = Gossip.where(user_id: User.find(params[:id])).count
     @comment_count = Comment.where(user_id: User.find(params[:id])).count
   end
+
+  def gossip
+    @user = User.find(params[:id])
+    @gossip_count = Gossip.where(user_id: User.find(params[:id])).count
+    @comment_count = Comment.where(user_id: User.find(params[:id])).count
+  end
 end
