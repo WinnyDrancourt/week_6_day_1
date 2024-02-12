@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get '/', to: 'static#welcome'
-  get 'welcome/:first_name', to: 'static#welcome'
+  get '/welcome', to: 'static#welcome'
+  get '/welcome/:first_name', to: 'static#welcome'
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
   get '/user/:id', to: 'static#users'
