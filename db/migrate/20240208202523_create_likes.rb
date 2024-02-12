@@ -3,6 +3,7 @@ class CreateLikes < ActiveRecord::Migration[7.1]
     create_table :likes do |t|
 
       t.belongs_to :gossip, index: true
+      t.belongs_to :comments, index: true
 
       t.timestamps
     end

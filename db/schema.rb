@@ -51,10 +51,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_12_134203) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "gossip_id"
-    t.bigint "Poly_comment_id"
+    t.bigint "comments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Poly_comment_id"], name: "index_likes_on_Poly_comment_id"
+    t.index ["comments_id"], name: "index_likes_on_comments_id"
     t.index ["gossip_id"], name: "index_likes_on_gossip_id"
   end
 
