@@ -50,9 +50,10 @@
         <div class="card-body">
         <p class="card-text"><%= gossip.user.first_name %></p>
           <h5 class="card-title"><%= gossip.title %></h5>
-          <p class="card-text"><%= gossip.content %></p>
+          <%= link_to "Accéder au gossip", gossip_path, class: "btn btn-primary" %>
         </div>
       </div>
     </div>
     <% end %>
     </div>
+
