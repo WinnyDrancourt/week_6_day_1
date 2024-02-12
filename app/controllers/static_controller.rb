@@ -17,6 +17,7 @@ class StaticController < ApplicationController
   end
 
   def gossip
+    @user = Gossip.find(params[:id]).user.id
     @gossip = Gossip.find(params[:id])
     @comment = Comment.where(gossip_id: Gossip.find(params[:id]))
   end
