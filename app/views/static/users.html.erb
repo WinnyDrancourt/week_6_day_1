@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+
+<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-fixed/">
+
+<!-- Bootstrap core CSS -->
+<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+
+<header>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Thirteenth navbar example">
+<div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+    <a class="navbar-brand col-lg-3 me-0" href="#">The Gossip Project Winalexs</a>
+    <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">La Team</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Gossips</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Tous les gossips</a></li>
+          <li><a class="dropdown-item" href="#">Création de gossips</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link">Contact</a>
+    </li>
+    </ul>
+    <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+      <button class="btn btn-primary">Button</button>
+    </div>
+  </div>
+</div>
+</nav>
+</header>
+<br>
+<br>
+<br>
+<div class ='align-middle'>
+	<div class="card mt-5 ml-5 mr-5" style="height:300px">
+	  <div class="card-body">
+	    <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h5>
+	    <p class="card-title"><strong>Age : </strong> <%= @user.age %></p>
+	    <p class="card-title"><strong>From : </strong><%= @user.city.name %></p>
+	    <p class="card-text"> <strong>Bio:</strong><br/> <%= @user.description %></p>
+	    <p class="card-text"> <strong>Joined The Gossip Project : </strong><%= @user.created_at.strftime("%d/%m/%Y") %></p>
+	    <p class="card-text"> <strong>Gossips shared : </strong><%= @gossip_count %></p>
+	    <p class="card-text"> <strong>Comments : </strong><%= @comment_count %></p>
+	  </div>
+	</div>
+</div>
