@@ -98,7 +98,7 @@ puts "Commentaires OK !"
   commentaire = Comment.all.shuffle.last
   Like.create(
     gossip_id: gossip.id,
-    poly_comment_id: commentaire.id,
+    Poly_comment_id: commentaire.id,
   )
 end
 puts "Likes OK !"
