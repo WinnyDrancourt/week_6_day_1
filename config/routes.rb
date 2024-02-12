@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
-  get '/user/:id', to: 'static#users'
-  get '/gossip/:id', to: 'static#gossip'
+  get '/user/:id', to: 'static#users', as: 'user'
+  get '/gossip/:id', to: 'static#gossip', as: 'gossip'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
