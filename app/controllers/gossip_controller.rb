@@ -20,7 +20,7 @@ class GossipController < ApplicationController
       redirect_to '/'
     else
       puts "Error : completez correctement svp"
-      render 'gossip/new'
+      render 'new'
     end
   end
 
