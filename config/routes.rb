@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  get 'user/show'
-  get 'user/edit'
-  get 'user/new'
-  get 'user/index'
-  get 'gossip/show'
-  get 'gossip/edit'
-  get 'gossip/new'
-  get 'gossip/index'
-
-  resources :gossips
-  resources :users
+  # get 'user/show'
+  # get 'user/edit'
+  # get 'user/new'
+  # get 'user/index'
+  # get 'gossip/show'
+  # get 'gossip/edit'
+  # get 'gossip/new'
+  # get 'gossip/index'
+  root to: 'gossip#index'
+  resources :gossip
+  resources :user
 
   # get '/welcome', to: 'dynamic#welcome'
   # get '/welcome/:first_name', to: 'dynamic#welcome', as: 'first_name'

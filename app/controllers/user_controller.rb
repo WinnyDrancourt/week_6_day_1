@@ -1,13 +1,25 @@
 class UserController < ApplicationController
-  def show
+
+  def index
   end
 
-  def edit
+  def show
+    @user = User.find(params[:id])
   end
 
   def new
   end
 
-  def index
+  def Create
   end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end

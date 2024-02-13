@@ -1,2 +1,17 @@
 <h1>User#show</h1>
 <p>Find me in app/views/user/show.html.erb</p>
+
+
+<div class ='align-middle'>
+	<div class="card mt-5 ml-5 mr-5" style="height:300px">
+	  <div class="card-body">
+	    <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h5>
+	    <p class="card-title"><strong>Age : </strong> <%= @user.age %></p>
+	    <p class="card-title"><strong>From : </strong><%= @user.city.name %></p>
+	    <p class="card-text"> <strong>Bio:</strong><br/> <%= @user.description %></p>
+	    <p class="card-text"> <strong>Joined The Gossip Project : </strong><%= @user.created_at.strftime("%d/%m/%Y") %></p>
+	    <p class="card-text"> <strong>Gossips shared : </strong><%= @gossip_count %></p>
+	    <p class="card-text"> <strong>Comments : </strong><%= @comment_count %></p>
+	  </div>
+	</div>
+</div>
