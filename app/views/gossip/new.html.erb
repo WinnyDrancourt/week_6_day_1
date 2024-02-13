@@ -1,11 +1,19 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<main>
 <h1>Gossip#new</h1>
 <p>Find me in app/views/gossip/new.html.erb</p>
+
+
+<% if @gossip.errors.any? %>
+<div class="alert alert-danger alert-form-false">
+  <p>FDP, nous n'avons pas réussi à créer le potin pour la (ou les) putain de raison(s) suivante(s) :</p>
+  <ul>
+    <% @gossip.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
+
 
 <form action= '<%= gossip_index_path %>' method="POST">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -13,12 +21,4 @@
   <input type="text" name="content", value="content">
   <input type="submit" value="Valider">
 </form>
-
-<% if @gossip.errors.any? %>
-  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
-  <ul>
-    <% @gossip.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+</main>

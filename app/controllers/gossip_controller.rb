@@ -17,6 +17,7 @@ class GossipController < ApplicationController
     @gossip = Gossip.create(user_id: User.all.shuffle.first.id, title: params[:title], content: params[:content])
     if @gossip.save
       puts "potin créé"
+      flash[:notice] = "Opération réussie !"
       redirect_to '/'
     else
       puts "Error : completez correctement svp"
