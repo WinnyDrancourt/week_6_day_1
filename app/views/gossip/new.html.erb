@@ -1,2 +1,15 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h1>Gossip#new</h1>
 <p>Find me in app/views/gossip/new.html.erb</p>
+
+<form action= <%= new_gossip_path %> method="POST">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" name="Title">
+  <input type="text" name="Content">
+  <input type="submit" value="Valider">
+</form>

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   root to: 'gossip#index'
   resources :gossip
   resources :user
+  get '/team', to: 'static#team'
+  get '/contact', to: 'static#contact'
 
   # get '/welcome', to: 'dynamic#welcome'
   # get '/welcome/:first_name', to: 'dynamic#welcome', as: 'first_name'
