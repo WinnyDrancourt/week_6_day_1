@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   # get 'gossip/new'
   # get 'gossip/index'
   root to: 'gossip#index'
-  resources :gossip
   resources :user
+  resources :gossip
+
+
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
 
