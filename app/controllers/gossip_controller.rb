@@ -1,13 +1,27 @@
 class GossipController < ApplicationController
-  def show
+
+  def index
+    @gossip = Gossip.all
   end
 
-  def edit
+  def show
+    @gossip = Gossip.find(params[:id])
+    @user = Gossip.find(params[:id]).user.id
   end
 
   def new
   end
 
-  def index
+  def Create
   end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 end
