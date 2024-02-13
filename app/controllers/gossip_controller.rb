@@ -23,6 +23,7 @@ class GossipController < ApplicationController
   end
 
   def destroy
+    Gossip.delete(params[:id].to_i)
   end
 
 end
