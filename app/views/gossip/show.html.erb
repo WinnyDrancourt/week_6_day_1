@@ -8,3 +8,8 @@
   <p class="card-text"> <strong>Comments : </strong></p>
 </div>
 
+<form action= '<%= gossip_path %>' method="DELETE">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Delete">
+</form>
+
