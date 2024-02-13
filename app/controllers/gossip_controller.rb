@@ -12,7 +12,8 @@ class GossipController < ApplicationController
   def new
   end
 
-  def Create
+  def create
+    Gossip.create(user_id: User.all.shuffle.first.id, title: params[:title], content: params[:content])
   end
 
   def edit
