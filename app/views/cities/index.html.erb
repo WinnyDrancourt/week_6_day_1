@@ -1,0 +1,22 @@
+<br>
+<br>
+<br>
+<br>
+
+<h1 class="text-center">Tous les Villes</h1>
+
+<div class="row col-10 row-gossip">
+  <% @cities.each do |city| %>
+    <div class="col-sm-2">
+      <div class="card card-index">
+        <h5 class="card-title"><%= city.name %></h5>
+          <div class="card__content">
+            <h5 class="card-title"><%= city.name %></h5>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <%= link_to "Accéder a la ville", city_path(city.id), class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+            </div>
+          </div>
+      </div>
+      <% end %>
+      </div>
+</main>
