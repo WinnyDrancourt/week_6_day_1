@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-  # get 'user/show'
-  # get 'user/edit'
-  # get 'user/new'
-  # get 'user/index'
-  # get 'gossip/show'
-  # get 'gossip/edit'
-  # get 'gossip/new'
-  # get 'gossip/index'
+
+
   root to: 'gossip#index'
+  resources :gossips
   resources :user
-  resources :gossip
+ 
 
 
   get '/team', to: 'static#team'

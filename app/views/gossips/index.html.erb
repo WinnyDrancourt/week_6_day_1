@@ -1,0 +1,22 @@
+<h1 class="text-center">Tous les gossips</h1>
+
+    <div class="row col-10 row-gossip">
+<% @gossips.each do |gossip| %>
+<div class="col-sm-2">
+  <div class="rounded text-light card align-items-center">
+  <p class="card-text"><%= gossip.user.first_name %></p>
+  <%= image_tag("user-image.png", class: "img-circle center", width: 55, height: 55) %>
+  </div>
+</div>
+<div class="col-sm-9">
+  <div class="rounded text-light bggossip ">
+  <h5 class="card-title"><%= gossip.title %></h5>
+  <p class="card-text"><%= gossip.content %>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= link_to "Accéder au gossip", gossip_path(gossip.id), class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+  </div>
+  </div>
+</div>
+<% end %>
+</div>
+</main>
