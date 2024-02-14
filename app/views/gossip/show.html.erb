@@ -9,9 +9,12 @@
   <p class="card-text"> <strong>Comments : </strong></p>
 </div>
 
-<form action= '<%= gossip_path %>' method="DELETE">
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value="Delete">
-</form>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= link_to "Revenir à tous les gossips", gossip_index_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %> 
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= link_to "Editer", edit_gossip_path(@gossip), class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= link_to "Supprimer", gossip_path(@gossip), method: :delete, class: "btn bouton-gossip justify-content-md-end me-md-2", data: { confirm: "êtes-vous sûr ?" } %>
+</div>
 
 </main>
