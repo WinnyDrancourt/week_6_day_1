@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :gossips
 
 
+
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
 
