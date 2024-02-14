@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @users = User.all
-    @city = City.all
+    @city = user.city
+    @gossips = user.gossips
     user
   end
 
