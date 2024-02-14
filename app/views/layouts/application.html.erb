@@ -27,14 +27,15 @@
   </header>
 
 
-  <body >
+  <body>
+
     <%= yield %>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bgnavbar" aria-label="Thirteenth navbar example">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
         <%= link_to "The Gossip Project Winalexs", gossips_path, class: "navbar-brand col-lg-3 me-0" %>
         <ul class="navbar-nav col-lg-6 justify-content-lg-center">
@@ -47,7 +48,9 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Gossips</a>
             <ul class="dropdown-menu">
-            <li><%= link_to "Création de gossip", new_gossip_path, class: "dropdown-item" %></li>
+
+              <li><%= link_to "Tous les gossips", gossips_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Création de gossip", new_gossip_path, class: "dropdown-item" %></li>
 
             </ul>
           </li>

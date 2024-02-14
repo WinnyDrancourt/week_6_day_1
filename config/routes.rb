@@ -1,21 +1,14 @@
 Rails.application.routes.draw do
 
-
-  root to: 'gossip#index'
+  root to: 'gossips#index'
+  resources :users
   resources :gossips
-  resources :user
- 
+
 
 
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
 
-  # get '/welcome', to: 'dynamic#welcome'
-  # get '/welcome/:first_name', to: 'dynamic#welcome', as: 'first_name'
-  # get '/team', to: 'static#team'
-  # get '/contact', to: 'static#contact'
-  # get '/user/:id', to: 'dynamic#user', as: 'user'
-  # get '/gossip/:id', to: 'dynamic#gossip', as: 'gossip'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
