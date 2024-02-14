@@ -1,4 +1,4 @@
-class GossipController < ApplicationController
+class GossipsController < ApplicationController
 
   def index
     @gossip = Gossip.all
@@ -26,18 +26,17 @@ class GossipController < ApplicationController
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
-    
+    set_gossip
+
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
+    set_gossip
     @gossip.update(gossip_params)
     redirect_to gossip_path
   end
 
   def destroy
-    
     @gossip.destroy
     redirect_to root_path
   end
@@ -52,6 +51,6 @@ private
     gossip_params = params.require(:gossip).permit(:title, :content)
   end
 
-  
+
 
 end
