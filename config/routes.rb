@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get 'cities/show'
 
   root to: 'gossips#index'
   resources :users
   resources :gossips
+  resources :cities
 
 
 

@@ -1,0 +1,28 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 class="text-center"> Voici les Gossips de <%= @city.name %> </h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <%= link_to "Index des villes", cities_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+            </div>
+
+<div class="row col-10 row-gossip">
+<% @gossips.each do |gossip| %>
+  <div class="col-sm-2">
+<div class="card card-index">
+<h5 class="card-title"><%= gossip.title %></h5>
+  <p class="card-text">Par <%= gossip.user.first_name %></p>
+  <div class="card__content">
+  <h5 class="card-title"><%= gossip.title %></h5>
+  <p class="card-text"><%= gossip.content %>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= link_to 'Auteur', user_path(gossip.user.id), class: "btn bouton justify-content-md me-md-2" %>
+  <%= link_to "Accéder au gossip", gossip_path(gossip.id), class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+  </div>
+  </div>
+  </div>
+<% end %>
+</div>
+</main>
