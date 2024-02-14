@@ -4,6 +4,8 @@
     
 }
 
+
+
 .jumbotron {
     background-image: url('background-image.png');
     background-size: cover;
@@ -39,13 +41,12 @@ main {
 }
 
 .row-gossip {
-    margin-left: 160px;
+    margin-left: 120px;
     margin-right: 0px;
-    align-items: center;
 
 }
 
-.card {
+/* .card {
     background-color: #9e99a1;
     background-image: linear-gradient(0deg, #232323 0%, #313030 100%);
     border: none;
@@ -53,7 +54,7 @@ main {
     margin: 10px 5px;
     padding: 5px 5px;
 
-}
+} */
 
 .card-text {
     margin: 0 0 0 0;
@@ -119,3 +120,102 @@ main {
 ::-webkit-scrollbar-thumb:hover {
     background: #894694; 
   }
+
+  .card-index {
+    color: white;
+    width: 150vh;
+    height: 16vh;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1000px;
+
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 10px;
+  }
+  
+  .card-gossip {
+    color: white;
+    width: 100vh;
+    max-width: 100vh;
+    min-height: 50vh;
+    max-height: fit-content;
+    padding: 20px;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:;
+    overflow: hidden;
+    perspective: 1000px;
+
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 10px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+  }
+  
+  .card__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card:hover .card__content {
+    transform: rotateX(0deg);
+  }
+  
+  .card__title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .card:hover svg {
+    scale: 0;
+  }
+  
+  .card__description {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #777;
+    line-height: 1.4;
+  }
+  
+  .gossip-cards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .box-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-show-button {
+    border-radius: 2px;
+    position: absolute;
+    bottom: 1px;
+    right: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
