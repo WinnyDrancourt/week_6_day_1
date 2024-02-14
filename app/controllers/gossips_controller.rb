@@ -7,6 +7,8 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params[:id])
+    @user = @gossip.user
+    @city = @user.city.name
   end
 
   def new
@@ -26,8 +28,11 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-    @gossip.update(gossip_params)
-    redirect_to gossip_path
+    if @gossip.update(gossip_params)
+      redirect_to gossip_path
+    else 
+      render :edit
+    end
   end
 
   def destroy
