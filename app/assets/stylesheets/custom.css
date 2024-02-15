@@ -4,14 +4,17 @@
     
 }
 
+h1 {
+  margin: 5vh;
+}
 
+.p-current {
+  margin-bottom: 0px;
+}
 
 .jumbotron {
-    background-image: url('background-image.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 92vh;
-    display: flex;
+
+;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -37,7 +40,7 @@ main {
     background-image: url('background-image.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 92vh;
+    height: 44em;
 }
 
 .row-gossip {
@@ -68,13 +71,99 @@ main {
 }
 
 .bouton-gossip {
-    border-radius: 2px;
-    background-color: #7a2585;
-    color: white;
+  border: none;
+  color: #6C1873;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.text {
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: medium;
+}
+
+.bouton-gossip:hover {
+  background: linear-gradient(0deg,#A47CF3,#c01fc9);
+
+  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+  0px 0px 180px 0px #9917FF;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+
+.bouton-gossip {
+
+
     margin: 3px 0 3px 0;
     padding: 2px 4px;
     display: flex;
-    justify-content:end;
+    justify-content:flex-start;
+}
+
+.bouton-connect {
+  border: none;
+
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #6e106e;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.text {
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: medium;
+}
+
+.bouton-connect:hover {
+  background: linear-gradient(0deg,#A47CF3,#c01fc9);
+  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+  0px 0px 180px 0px #9917FF;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+
+.bouton-connect {
+
+    color: white;
+    margin: 3px 0 3px 0;
+    padding: 2px 4px;
+
+}
+
+.bouton-connexion:hover {
+  text-decoration: underline;
+}
+
+.bouton-connexion {
+  border-radius: 2px;
+
+  color: black;
+  margin: 3px 0 3px 0;
+  padding: 2px 4px;
+  display: flex;
+  justify-content:center;
 }
 
 .team-margin {
@@ -105,6 +194,10 @@ main {
 
 }
 
+.click-for-nothing {
+  max-width: fit-content;
+  max-height: fit-content;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
