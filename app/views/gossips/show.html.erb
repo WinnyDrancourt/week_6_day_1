@@ -15,7 +15,7 @@
   <div class="box-show-button">
   <%= link_to "Revenir à tous les gossips", gossips_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
   <%= link_to "Editer", edit_gossip_path(@gossip), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
-  <a href="<%= gossip_path(@gossip) %>" class="btn bouton-gossip justify-content-md-end me-md-2" data-turbo-method="DELETE" data-turbo-confirm="êtes vous sur ?">Supprimer</a>
+  <%= button_to "Delete", @gossip, :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
   </div>
 </div>
 </div>
