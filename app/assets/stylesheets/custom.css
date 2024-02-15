@@ -231,9 +231,9 @@ main {
   
   .card-gossip {
     color: white;
-    width: 100vh;
-    max-width: 100vh;
-    min-height: 50vh;
+    width: fit-content;
+    max-width: fit-content;
+    min-height: fit-content;
     max-height: fit-content;
     padding: 20px;
     background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );

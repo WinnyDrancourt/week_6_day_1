@@ -28,7 +28,9 @@ class UsersController < ApplicationController
   def create
     user = User.new(posts_params)
     if user.save
-      redirect_to user_path(user.id)
+      flash[:success] = "User created successfully!"
+      redirect_to new_session_path
+
     else
       redirect_to new_user_path
     end
