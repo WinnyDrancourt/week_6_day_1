@@ -12,8 +12,15 @@ class CommentsController < ApplicationController
   end
 
   def create
+
     @comment = Comment.create(comment_params)
-    redirect_to gossip_path(@gossip.id)
+    @comment.user = current_user
+    if @comment.save
+      flash[:success] = "commentaire bien créé !"
+      redirect_to gossip_path(@gossip.id)
+    else
+      render :new
+    end
   end
 
   def destroy

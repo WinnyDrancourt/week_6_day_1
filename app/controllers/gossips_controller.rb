@@ -1,5 +1,7 @@
 class GossipsController < ApplicationController
-
+  before_action :set_gossip, only: [:edit, :update, :destroy]
+  before_action :gossip, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, only: [:new, :create, :show]
   def index
     @gossips = Gossip.all
 
@@ -18,19 +20,33 @@ class GossipsController < ApplicationController
   end
 
   def create
-    gossip = Gossip.create(gossip_params)
-    redirect_to gossip_path(gossip.id)
+    @gossip = Gossip.create(gossip_params)
+    @gossip.user = current_user
+    if @gossip.save
+      flash[:success] = "Potin bien créé !"
+      redirect_to gossip_path(gossip.id)
+    else
+      render :new
+    end
   end
 
   def edit
-    @gossip = gossip
-    gossip
+     unless current_user && current_user == @gossip.user
+      flash[:success] = "Pas autorisé !"
+      redirect_to gossip_path(gossip.id)
+      return
+    end
   end
 
   def update
-    gossip
-    if gossip.update(gossip_params)
-      redirect_to gossip_path
+    unless current_user && current_user == @gossip.user
+      flash[:success] = "Pas autorisé !"
+      redirect_to gossip_path(gossip.id)
+      return
+    end
+
+    if @gossip.update(gossip_params)
+      redirect_to gossip_path(gossip.id), notice: 'Potin mis à jour avec succès.'
     else
       render :edit
     end
@@ -45,13 +61,24 @@ class GossipsController < ApplicationController
 
 private
 
+def set_gossip
+  @gossip = Gossip.find(params[:id])
+end
+
   def gossip
     Gossip.find(params[:id])
   end
 
   def gossip_params
-    params.require(:gossip).permit(:title, :content)
+    params.require(:gossip).permit(:title, :content, :user_id)
   end
 
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
 
 end
+
