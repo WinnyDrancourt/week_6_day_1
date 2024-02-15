@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
+    <%= current_user.first_name %>
     </div>
 
     <%= f.hidden_field :gossip_id, :value => @gossip.id %>
@@ -41,8 +41,11 @@
 
   <div class="box-show-button">
   <%= link_to "Revenir à tous les gossips", gossips_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+  <% if current_user == @gossip.user %>
   <%= link_to "Editer", edit_gossip_path(@gossip), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
   <%= button_to "Delete", @gossip, :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
+  <% end %>
+
   </div>
 </div>
 </div>
