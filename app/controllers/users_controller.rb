@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       redirect_to new_session_path
 
     else
+      flash[:error] = "Failed to create user."
       redirect_to new_user_path
     end
   end
