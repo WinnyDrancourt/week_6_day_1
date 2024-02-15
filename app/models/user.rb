@@ -34,6 +34,6 @@ def password_complexity
   return if password.blank? || password.length >= 8 && password.match(/\d/) && password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[^a-zA-Z\d]/)
   errors.add :password, 'Password must be at least 8 characters long and include at least one digit, one lowercase letter, one uppercase letter, and one special character.'
 end 
-  
+
 
 end
