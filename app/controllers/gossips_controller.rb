@@ -37,7 +37,7 @@ class GossipsController < ApplicationController
 
   def destroy
     gossip
-    @gossip.destroy
+    gossip.destroy
     redirect_to gossips_path
 
   end
