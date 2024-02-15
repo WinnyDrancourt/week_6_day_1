@@ -6,9 +6,11 @@ class GossipsController < ApplicationController
   end
 
   def show
-    @gossip = Gossip.find(params[:id])
-    @user = @gossip.user
+    @gossip = gossip
+    @user = gossip.user
     @city = @user.city
+    @comments = Comment.where(gossip_id: params[:id]).all
+    @comment = Comment.new
   end
 
   def new
@@ -21,13 +23,11 @@ class GossipsController < ApplicationController
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
-
-
+    gossip
   end
 
   def update
-    @gossip = Gossip.find(params[:id])
+    gossip
     if @gossip.update(gossip_params)
       redirect_to gossip_path
     else
@@ -36,7 +36,7 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-    @gossip = Gossip.find(params[:id])
+    gossip
     @gossip.destroy
     redirect_to gossips_path
 
@@ -44,8 +44,9 @@ class GossipsController < ApplicationController
 
 private
 
-  def gossip_params
-    params.require(:gossip).permit(:user_id, :title, :content)
+  def gossip
+    Gossip.find(params[:id])
   end
+
 
 end

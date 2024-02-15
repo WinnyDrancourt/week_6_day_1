@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/edit'
   get 'cities/show'
 
   root to: 'gossips#index'
   resources :users
-  resources :gossips
-  resources :cities
+  resources :cities, only: [:index, :show]
+  resources :gossips do
+    resources :comments
+  end
 
 
 
