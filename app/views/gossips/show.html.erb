@@ -16,6 +16,7 @@
   <% @comments.each do |comment| %>
     <h5 class="card-title"><%= comment.content %></h5>
       <p class="card-text"> <a href="<%= user_path(comment.user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{comment.user.first_name}, #{comment.user.last_name}" %></a></p>
+      <%= link_to "Editer", edit_gossip_comment_path(@gossip, comment), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
       <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
   <% end %>
 
@@ -45,7 +46,6 @@
 </div>
 
 <% end %>
-
 
 </main>
 

@@ -3,10 +3,11 @@ class Gossip < ApplicationRecord
     presence: true,
     length: { minimum: 3, maximum: 14 }
   validates :content, presence: true
-  
+
 
   belongs_to :user
 
+  has_many :comment
   has_many :poly_comments, as: :commentable
 
   has_many :likes

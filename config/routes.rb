@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'poly_comments/edit'
   get 'comments/new'
   get 'comments/edit'
   get 'cities/show'
