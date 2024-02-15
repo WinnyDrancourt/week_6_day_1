@@ -219,3 +219,29 @@ main {
     justify-content: space-between;
   }
 
+  .toggle-label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .toggle-label::after {
+    content: "Show Password";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  
+  .toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .toggle-checkbox:checked ~ #user_password {
+    -webkit-text-security: none; /* For Chrome, Safari, and newer versions of Edge /
+    text-security: none; / For Firefox */
+  }
+  
+  .toggle-checkbox:checked ~ .toggle-label::after {
+    content: "Hide Password";
+  }
