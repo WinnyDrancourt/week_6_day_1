@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   end
   
   resources :sessions, only: [:new, :create, :destroy]
-
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
 
