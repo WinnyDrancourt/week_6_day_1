@@ -3,6 +3,14 @@
 <br>
 <br>
 <br>
+
+
+<% flash.each do |key, message| %>
+  <div class="alert bg-light text-danger alert-<%= key %>">
+    <%= message %>
+  </div>
+<% end %>
+
 <%= form_for @user do |f| %>
   <div class="form-group">
     <label> first_name </label>
