@@ -11,8 +11,27 @@
   <p class="card-text"> <a href="<%= city_path(@city.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>City : </strong><%= @user.city.name %></a> </p>
 
   <p class="card-text"> <strong>Create : </strong><%= @gossip.created_at.strftime("%d/%m/%Y") %></p>
-  <p class="card-text"> <strong>Comments : </strong>
 
+
+  <%= @gossip.likes.count %> Likes
+  <% like = current_user.likes.find_by(gossip: @gossip) %>
+  <% if like.nil? %>
+    <form action="/likes" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="like[gossip_id]" value="<%= @gossip.id %>">
+      <input type="submit" value="Like">
+    </form>
+  <% else %>
+    <form action="<% like_path(like)%>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="UnLike">
+    </form>
+  <% end %>
+
+
+
+  <p class="card-text"> <strong>Comments : </strong>
   <% @comments.each do |comment| %>
     <h5 class="card-title"><%= comment.content %></h5>
       <p class="card-text"> <a href="<%= user_path(comment.user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{comment.user.first_name}, #{comment.user.last_name}" %></a></p>
