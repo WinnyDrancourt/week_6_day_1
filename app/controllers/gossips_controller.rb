@@ -23,12 +23,13 @@ class GossipsController < ApplicationController
   end
 
   def edit
+    @gossip = gossip
     gossip
   end
 
   def update
     gossip
-    if @gossip.update(gossip_params)
+    if gossip.update(gossip_params)
       redirect_to gossip_path
     else
       render :edit
@@ -46,6 +47,10 @@ private
 
   def gossip
     Gossip.find(params[:id])
+  end
+
+  def gossip_params
+    params.require(:gossip).permit(:title, :content)
   end
 
 
