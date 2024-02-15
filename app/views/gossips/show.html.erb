@@ -1,15 +1,34 @@
 <main>
 
-<div class="box-show">
-<div class="card card-gossip">
-<p class="card-text"> <a href="<%= user_path(@user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
+<div class="row">
+<div class="col-sm-3">
+  <div class="well">
+  <p class=""> <a href="<%= user_path(@user.id) %>" class=""><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
+  <p class=""> <a href="<%= city_path(@city.id) %>" class=""><strong>City : </strong><%= @user.city.name %></a> </p>
+  <div>
+  </div>
 </div>
-</div>
+<div class="col-sm-9">
+  <div class="well">
   <h5 class="card-title"><%= @gossip.title %></h5>
-  <h5 class="card-title"><strong>Content : </strong> <%= @gossip.content %></h5>
+  </div>
+</div>
+</div>
+
+<div class="row ">
+<div class="col-sm-3">
+
+
+<div class="col-sm-9">
+
+<h5 class="card-title"><strong>Content : </strong> <%= @gossip.content %></h5>
+</div>
+</div>
+
+
   
   <p class="card-text"> </p>
-  <p class="card-text"> <a href="<%= city_path(@city.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>City : </strong><%= @user.city.name %></a> </p>
+ 
 
   <p class="card-text"> <strong>Create : </strong><%= @gossip.created_at.strftime("%d/%m/%Y") %></p>
 
