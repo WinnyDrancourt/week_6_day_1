@@ -26,8 +26,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(posts_params)
-    redirect_to user_path(user.id)
+    user = User.new(posts_params)
+    if user.save
+      redirect_to user_path(user.id)
+    else
+      redirect_to new_user_path
+    end
   end
 
   def destroy
@@ -42,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def posts_params
-    params.require(:user).permit(:first_name, :last_name, :age, :email, :city_id)
+    params.require(:user).permit(:first_name, :last_name, :description, :age, :email, :email_confirmation, :city_id, :password, :password_confirmation)
   end
 
 end
