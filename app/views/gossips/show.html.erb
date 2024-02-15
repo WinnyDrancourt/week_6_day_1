@@ -5,7 +5,7 @@
 <div class="box-show">
 <div class="card card-gossip">
   <h5 class="card-title"><%= @gossip.title %></h5>
-  <p class="card-title"><strong>Content : </strong> <%= @gossip.content %></p>
+  <h5 class="card-title"><strong>Content : </strong> <%= @gossip.content %></h5>
   <p class="card-text"> <a href="<%= user_path(@user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
   <p class="card-text"> </p>
   <p class="card-text"> <a href="<%= city_path(@city.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>City : </strong><%= @user.city.name %></a> </p>
@@ -20,6 +20,25 @@
       <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
   <% end %>
 
+  <%= form_with(model: [@gossip, Comment.build])  do |f| %>
+
+    <div class="form-group">
+      <label>Content</label>
+      <%= f.text_area :content, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
+    </div>
+
+    <%= f.hidden_field :gossip_id, :value => @gossip.id %>
+
+    <div class="form-group">
+    <button type="submit" class="btn bouton-gossip">Valider</button>
+  </div>
+
+  <% end %>
+
   <div class="box-show-button">
   <%= link_to "Revenir à tous les gossips", gossips_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
   <%= link_to "Editer", edit_gossip_path(@gossip), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
@@ -28,24 +47,6 @@
 </div>
 </div>
 
-<%= form_with(model: [@gossip, Comment.build])  do |f| %>
-
-  <div class="form-group">
-    <label>Content</label>
-    <%= f.text_area :content, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
-  </div>
-
-  <%= f.hidden_field :gossip_id, :value => @gossip.id %>
-
-  <div class="form-group">
-  <button type="submit" class="btn bouton-gossip">Valider</button>
-</div>
-
-<% end %>
 
 </main>
 
