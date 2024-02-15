@@ -219,9 +219,34 @@ main {
     justify-content: space-between;
   }
 
+  .toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
   .toggle-label {
     position: relative;
     cursor: pointer;
+    display: inline-block; /* Ensures label takes up space */
+    padding-left: 24px; /* Adjust as needed */
+  }
+  
+  .toggle-label::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: #fff; /* Adjust as needed */
+    border: 1px solid #ccc; /* Adjust as needed */
+  }
+  
+  .toggle-checkbox:checked ~ .toggle-label::before {
+    background-color: #ccc; /* Adjust as needed */
   }
   
   .toggle-label::after {
@@ -232,16 +257,12 @@ main {
     transform: translateY(-50%);
   }
   
-  .toggle-checkbox {
-    position: absolute;
-    opacity: 0;
-  }
-  
   .toggle-checkbox:checked ~ #user_password {
-    -webkit-text-security: none; /* For Chrome, Safari, and newer versions of Edge /
-    text-security: none; / For Firefox */
+    -webkit-text-security: none; /* For Chrome, Safari, and newer versions of Edge */
+    text-security: none; /* For Firefox */
   }
   
   .toggle-checkbox:checked ~ .toggle-label::after {
     content: "Hide Password";
   }
+  

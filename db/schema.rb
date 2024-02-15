@@ -21,6 +21,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_075516) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "commentaires", force: :cascade do |t|
+    t.text "content"
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.bigint "user_id"
+    t.bigint "gossip_id"
+    t.bigint "commentaire_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_commentaires_on_commentable"
+    t.index ["commentaire_id"], name: "index_commentaires_on_commentaire_id"
+    t.index ["gossip_id"], name: "index_commentaires_on_gossip_id"
+    t.index ["user_id"], name: "index_commentaires_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -51,10 +66,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_075516) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "gossip_id"
-    t.bigint "comments_id"
+    t.bigint "commentaire_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comments_id"], name: "index_likes_on_comments_id"
+    t.index ["commentaire_id"], name: "index_likes_on_commentaire_id"
     t.index ["gossip_id"], name: "index_likes_on_gossip_id"
   end
 
