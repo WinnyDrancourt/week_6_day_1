@@ -12,6 +12,7 @@
   <p class="card-text"> <strong>Email : </strong><%= @user.email %></p>
   <p class="card-text"> <a href="<%= city_path(@city.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>City : </strong><%= @user.city.name %></a> </p>
 
+  <p class="card-text"> <strong>Gossips : </strong></p>
     <% @gossips.each do |gossip| %>
     <h5 class="card-title"><%= gossip.title %></h5>
       <p class="card-text"><%= gossip.content %>
