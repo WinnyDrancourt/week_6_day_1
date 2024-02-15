@@ -14,7 +14,6 @@ h1 {
 
 .jumbotron {
 
-;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -92,7 +91,7 @@ main {
 .bouton-gossip:hover {
   background: linear-gradient(0deg,#A47CF3,#c01fc9);
 
-  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  inset: 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
   0px 0px 0px 4px rgba(255, 255, 255, 0.2),
   0px 0px 180px 0px #9917FF;
   transform: translateY(-2px);
@@ -133,7 +132,7 @@ main {
 
 .bouton-connect:hover {
   background: linear-gradient(0deg,#A47CF3,#c01fc9);
-  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  inset: 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
   0px 0px 0px 4px rgba(255, 255, 255, 0.2),
   0px 0px 180px 0px #9917FF;
   transform: translateY(-2px);
@@ -241,7 +240,6 @@ main {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content:;
     overflow: hidden;
     perspective: 1000px;
 
@@ -352,7 +350,7 @@ main {
   
   .toggle-checkbox:checked ~ #user_password {
     -webkit-text-security: none; /* For Chrome, Safari, and newer versions of Edge */
-    text-security: none; /* For Firefox */
+
   }
   
   .toggle-checkbox:checked ~ .toggle-label::after {

@@ -24,7 +24,7 @@ class GossipsController < ApplicationController
     @gossip.user = current_user
     if @gossip.save
       flash[:success] = "Potin bien créé !"
-      redirect_to gossip_path(gossip.id)
+      redirect_to @gossip
     else
       render :new
     end

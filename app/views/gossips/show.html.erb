@@ -2,9 +2,12 @@
 
 <div class="box-show">
 <div class="card card-gossip">
+<p class="card-text"> <a href="<%= user_path(@user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
+</div>
+</div>
   <h5 class="card-title"><%= @gossip.title %></h5>
   <h5 class="card-title"><strong>Content : </strong> <%= @gossip.content %></h5>
-  <p class="card-text"> <a href="<%= user_path(@user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
+  
   <p class="card-text"> </p>
   <p class="card-text"> <a href="<%= city_path(@city.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>City : </strong><%= @user.city.name %></a> </p>
 
