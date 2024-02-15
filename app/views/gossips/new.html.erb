@@ -15,8 +15,14 @@
   </div>
 
   <div class="form-group">
-    <%= current_user.first_name %>
+    <% current_user.first_name %>
   </div>
+
+  <p>Choisir un tag :
+  <% @tags.each do |tag| %>
+        <%= check_box_tag 'array_tag[]', tag.id -%>
+        <%= h tag.title -%>
+  <% end %></p>
 
   <div class="form-group">
   <button type="submit" class="btn bouton-gossip">Valider</button>
