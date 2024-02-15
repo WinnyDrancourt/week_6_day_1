@@ -3,7 +3,7 @@ class User < ApplicationRecord
   belongs_to :city
 
   has_many :gossips
-  has_many :poly_comments
+  has_many :likes, dependent: :destroy
 
   has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
   has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
@@ -28,12 +28,12 @@ class User < ApplicationRecord
     validate :password_complexity
   # validates :password, confirmation: true, :password_complexity
   # validates :password_confirmation, presence: true, :password_complexity
-  
-private 
+
+private
 def password_complexity
   return if password.blank? || password.length >= 8 && password.match(/\d/) && password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[^a-zA-Z\d]/)
   errors.add :password, 'Password must be at least 8 characters long and include at least one digit, one lowercase letter, one uppercase letter, and one special character.'
-end 
+end
 
 
 end
