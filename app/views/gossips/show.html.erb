@@ -26,9 +26,9 @@
 </div>
 
 
-  
+
   <p class="card-text"> </p>
- 
+
 
   <p class="card-text"> <strong>Create : </strong><%= @gossip.created_at.strftime("%d/%m/%Y") %></p>
 
@@ -48,31 +48,32 @@
 
 
   <p class="card-text"> <strong>Comments : </strong>
-  <% @comments.each do |comment| %>
+  <% @comments.where(parent_id: nil).each do |comment| %>
     <h5 class="card-title"><%= comment.content %></h5>
-      <p class="card-text"> <a href="<%= user_path(comment.user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{comment.user.first_name}, #{comment.user.last_name}" %></a></p>
+    <p class="card-text"> <a href="<%= user_path(comment.user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{comment.user.first_name}, #{comment.user.last_name}" %></a></p>
+    <%= link_to "Editer", edit_gossip_comment_path(@gossip, comment), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
+    <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
+    <% comment.comments.each do |child| %>
+      <h6 class="card-title"><%= child.content %></h6>
       <%= link_to "Editer", edit_gossip_comment_path(@gossip, comment), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
       <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
+      <% end %>
   <% end %>
 
   <%= form_with(model: [@gossip, Comment.build])  do |f| %>
-
     <div class="form-group">
       <label>Content</label>
       <%= f.text_area :content, class: 'form-control' %>
     </div>
-
     <div class="form-group">
-    <%= current_user.first_name %>
+    <% current_user.first_name %>
     </div>
-
     <%= f.hidden_field :gossip_id, :value => @gossip.id %>
-
     <div class="form-group">
     <button type="submit" class="btn bouton-gossip">Valider</button>
   </div>
-
   <% end %>
+  </div>
 
   <div class="box-show-button">
   <%= link_to "Revenir à tous les gossips", gossips_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
