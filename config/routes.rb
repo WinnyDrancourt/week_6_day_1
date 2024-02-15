@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :gossips do
     resources :comments
   end
-
-
+  
+  resources :sessions, only: [:new, :create, :destroy]
 
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
