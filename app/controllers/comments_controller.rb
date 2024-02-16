@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-
+    @parent = @comment
     @comment = Comment.create(comment_params)
     @comment.user = current_user
     if @comment.save
