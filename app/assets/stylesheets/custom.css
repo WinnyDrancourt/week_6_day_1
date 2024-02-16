@@ -4,6 +4,15 @@
     
 }
 
+.link-to-user {
+  text-decoration: none;
+  color: white;
+}
+
+.link-to-user:hover {
+  text-decoration: underline;
+}
+
 h1 {
   margin: 5vh;
 }
@@ -71,6 +80,7 @@ main {
 
 .bouton-gossip {
   border: none;
+  text-decoration: none;
   color: #6C1873;
   border-radius: 5px;
   display: flex;
@@ -101,19 +111,21 @@ main {
   color: white;
 }
 
+.size-button {
+  width: 150px;
+}
 
 .bouton-gossip {
-
-
+  text-decoration: none;
     margin: 3px 0 3px 0;
     padding: 2px 4px;
     display: flex;
-    justify-content:flex-start;
+    justify-content:center;
 }
 
 .bouton-connect {
   border: none;
-
+  text-decoration: none;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -247,6 +259,24 @@ main {
     margin-bottom: 10px;
   }
   
+  .card-user {
+    color: white;
+    width: 444px;
+  
+    height: fit-content;
+
+    padding: 20px;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    perspective: 1000px;
+
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 10px;
+  }
+
   .card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
@@ -355,5 +385,22 @@ main {
   
   .toggle-checkbox:checked ~ .toggle-label::after {
     content: "Hide Password";
+  }
+  
+  .size-comment-box {
+    min-width: 100%;
+  }
+
+  .size-gossip-box {
+    min-width: 76.4%;
+  }
+
+  .size-button-box {
+
+    width: fit-content;
+  }
+
+  .size-user-box {
+    max-width: 15%;
   }
   
