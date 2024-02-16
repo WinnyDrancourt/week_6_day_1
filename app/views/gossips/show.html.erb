@@ -1,91 +1,63 @@
 <main>
-
-<div class="row">
-<div class="col-sm-3">
-  <div class="well">
-  <p class=""> <a href="<%= user_path(@user.id) %>" class=""><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
-  <p class=""> <a href="<%= city_path(@city.id) %>" class=""><strong>City : </strong><%= @user.city.name %></a> </p>
-  <div>
-  </div>
-</div>
-<div class="col-sm-9">
-  <div class="well">
-  <h5 class="card-title"><%= @gossip.title %></h5>
-  </div>
-</div>
-</div>
-
-<div class="row ">
-<div class="col-sm-3">
-
-
-<div class="col-sm-9">
-
-<h5 class="card-title"><strong>Content : </strong> <%= @gossip.content %></h5>
-</div>
-</div>
-
-
-
-  <p class="card-text"> </p>
-
-
-  <p class="card-text"> <strong>Create : </strong><%= @gossip.created_at.strftime("%d/%m/%Y") %></p>
-
-
-  <%= @gossip.likes.count %> Likes
-  <% like = current_user.likes.find_by(gossip: @gossip) %>
-  <% if like.nil? %>
-    <form action="/likes" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="like[gossip_id]" value="<%= @gossip.id %>">
-      <input type="submit" value="Like">
-    </form>
-  <% else %>
-    <%= button_to "Unlike", like_path(like), form_authenticity_token: true, :method => :delete, class: "btn btn-danger" %>
-  <% end %>
-
-
-
-  <p class="card-text"> <strong>Comments : </strong>
-  <% @comments.where(parent_id: nil).each do |comment| %>
-    <h5 class="card-title"><%= comment.content %></h5>
-    <p class="card-text"> <a href="<%= user_path(comment.user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{comment.user.first_name}, #{comment.user.last_name}" %></a></p>
-    <%= link_to "Editer", edit_gossip_comment_path(@gossip, comment), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
-    <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
-    <% comment.comments.each do |child| %>
-      <h6 class="card-title"><%= child.content %></h6>
-      <%= link_to "Editer", edit_gossip_comment_path(@gossip, comment), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
-      <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
+  <div class="m-5">
+    <%= link_to "Revenir à tous les gossips", gossips_path, class: "btn bouton-gossip", style: "width: fit-content;" %>
+    <div class="row">
+      <div class="col-sm-3 card-gossip size-user-box mb-5 mt-5">
+        <div class="well">
+          <p class=""> <a href="<%= user_path(@user.id) %>" class="link-to-user"><strong>Author : </strong><%= "#{@user.first_name}, #{@user.last_name}" %></a></p>
+          <p class=""> <a href="<%= city_path(@city.id) %>" class="link-to-user"><strong>City : </strong><%= @user.city.name %></a> </p>
+        </div>
+      </div>
+      <div class="col-sm-9 card-gossip m-5 size-gossip-box">
+        <div class="well">
+          <p class="card-text"> <strong>Créé le : </strong><%= @gossip.created_at.strftime("%d/%m/%Y") %></p>
+          <h5 class="card-title"><strong>Titre : </strong><%= @gossip.title %></h5>
+          <h5 class="card-title"><strong>Gossip : </strong> <%= @gossip.content %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="card-gossip">
+      <%= @gossip.likes.count %> Likes
+      <% like = current_user.likes.find_by(gossip: @gossip) %>
+      <% if like.nil? %>
+        <form action="/likes" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="like[gossip_id]" value="<%= @gossip.id %>">
+          <input type="submit" value="Like" class="bouton-gossip ms-2">
+        </form>
+      <% else %>
+        <%= button_to "Unlike", like_path(like), form_authenticity_token: true, :method => :delete, class: "btn bouton-gossip ms-2" %>
       <% end %>
-  <% end %>
-
-  <%= form_with(model: [@gossip, Comment.build])  do |f| %>
-    <div class="form-group">
-      <label>Content</label>
-      <%= f.text_area :content, class: 'form-control' %>
     </div>
-    <div class="form-group">
-    <% current_user.first_name %>
+    <p class="card-text"> <strong>Comments : </strong>
+    <% @comments.each do |comment| %>
+      <div class="card-gossip size-comment-box d-flex justify-content-between align-items-center">
+        <p class="card-text"> <a href="<%= user_path(comment.user.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>Author : </strong><%= "#{comment.user.first_name}, #{comment.user.last_name}" %></a></p>
+        <h5 class="card-title"><%= comment.content %></h5>
+        <div class=> 
+          <%= link_to "Editer", edit_gossip_comment_path(@gossip, comment), class: "btn bouton-gossip" %>
+          <%= button_to "Delete", [@gossip, comment], :method => :delete, class: "btn bouton-gossip", id: "delete_gossip_button" %>
+        </div>
+      </div>
+    <% end %>
+    </p>
+    <%= form_with(model: [@gossip, Comment.build])  do |f| %>
+      <div class="form-group">
+        <label>Content</label>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= current_user.first_name %>
+      </div>
+      <%= f.hidden_field :gossip_id, :value => @gossip.id %>
+      <div class="form-group">
+        <button type="submit" class="btn bouton-gossip">Valider</button>
+      </div>
+    <% end %>
+    <div class="size-button-box d-flex justify-content-between">
+      <% if current_user == @gossip.user %>
+        <%= link_to "Editer", edit_gossip_path(@gossip), class: "btn bouton-gossip " %>
+        <%= button_to "Delete", @gossip, :method => :delete, class: "btn bouton-gossip ms-1", id: "delete_gossip_button" %>
+      <% end %>
     </div>
-    <%= f.hidden_field :gossip_id, :value => @gossip.id %>
-    <div class="form-group">
-    <button type="submit" class="btn bouton-gossip">Valider</button>
-  </div>
-  <% end %>
-  </div>
-
-  <div class="box-show-button">
-  <%= link_to "Revenir à tous les gossips", gossips_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
-  <% if current_user == @gossip.user %>
-  <%= link_to "Editer", edit_gossip_path(@gossip), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
-  <%= button_to "Delete", @gossip, :method => :delete, class: "btn btn-danger", id: "delete_gossip_button" %>
-  <% end %>
-
-  </div>
-</div>
-</div>
-
-
 </main>
-

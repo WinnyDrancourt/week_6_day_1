@@ -1,62 +1,48 @@
-<br>
-<br>
-<br>
-<br>
-<br>
 
-
-<% flash.each do |key, message| %>
-  <div class="alert bg-light text-danger alert-<%= key %>">
-    <%= message %>
+<main class="d-flex justify-content-center align-items-center vh-100">
+  <div class="col-md-6">
+    <%= form_for @user do |f| %>
+      <div class="form-group col mb-2">
+        <label> Prénom </label>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-2">
+        <label> Nom de famille </label>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-2">
+        <label> Age </label>
+        <%= f.text_field :age, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-2">
+        <label> Email </label>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-2">
+        <label> Confirmez votre email </label>
+        <%= f.text_field :email_confirmation, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-3">
+        <label> Bio </label>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-2">
+      <label> Ville </label>
+        <%= f.collection_select :city_id, City.order(:name), :id, :name %>
+      </div>
+      <div class="mb-2">
+        <div class="form-group mb-2">
+          <%= f.label :password %>
+          <%= f.password_field :password, id: "user_password", class: 'form-control' %>
+        </div>
+        <div class="form-group mb-2">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <button type="submit" class="btn btn-primary">Creer l'utilisateur</button>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<%= form_for @user do |f| %>
-  <div class="form-group">
-    <label> first_name </label>
-    <%= f.text_field :first_name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <label> last_name </label>
-    <%= f.text_field :last_name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <label> age </label>
-    <%= f.text_field :age, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <label> email </label>
-    <%= f.text_field :email, class: 'form-control' %>
-
-  <div class="form-group">
-  <label> email_confirmation </label>
-  <%= f.text_field :email_confirmation, class: 'form-control' %>
-
-
-  </div>
-  <div class="form-group">
-    <label> description </label>
-    <%= f.text_field :description, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.collection_select :city_id, City.order(:name), :id, :name %>
-  </div>
-
-  <div>
-  <%= f.label :password %>
-  <%= f.password_field :password, id: "user_password" %>
-
-  <!-- Custom checkbox to toggle password visibility -->
-  <label for="togglePasswordVisibility" class="toggle-label"></label>
-  <input type="checkbox" id="togglePasswordVisibility" class="toggle-checkbox">
-  
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-</div>
-  <div class="form-group">
-  <button type="submit" class="btn btn-primary">Creer l'utilisateur</button>
-</div>
-
-  
-<% end %>
+</main>

@@ -1,11 +1,7 @@
-<br>
-<br>
-<br>
-<br>
-<br>
 
+<main>
 <div class="box-show">
-<div class="card card-gossip">
+<div class="card card-user">
   <h5 class="card-title"><strong>First name : </strong><%= @user.first_name %></h5>
   <h5 class="card-title"><strong>Last name : </strong><%= @user.last_name %></h5>
   <p class="card-title"><strong>Age : </strong> <%= @user.age %></p>
@@ -13,20 +9,28 @@
   <p class="card-text"> <strong>Description : </strong><%= @user.description %></p>
   <p class="card-text"> <a href="<%= city_path(@city.id) %>" class="btn bouton justify-content-md-end me-md-2"><strong>City : </strong><%= @user.city.name %></a> </p>
 
-  <p class="card-text"> <strong>Gossips : </strong></p>
+
+  <p class="card-text "> <strong>Gossips : </strong></p>
     <% @gossips.each do |gossip| %>
+      <div class="mb-5 text-center">
+      <div class="">
+      <%= link_to "Accéder au gossip", gossip_path(gossip.id), class: "btn bouton-gossip size- button text-center " %>
+      </div>
     <h5 class="card-title"><%= gossip.title %></h5>
       <p class="card-text"><%= gossip.content %>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <%= link_to "Accéder au gossip", gossip_path(gossip.id), class: "btn bouton-gossip justify-content-md-end me-md-2" %>
       </div>
-    <% end %>
 
-  <div class="box-show-button">
-  <%= link_to "Acceder a l'index", users_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
+      <% end %>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <div class="box-show-button">
+
+
+      <%= link_to "Acceder a l'index", users_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
   <%= link_to "Editer", edit_user_path(@user), class: "btn bouton-gossip btn bouton-gossip justify-content-md-end me-md-2" %>
   <a href="<%= user_path(@user) %>" class="btn bouton-gossip justify-content-md-end me-md-2" data-turbo-method="DELETE" data-turbo-confirm="êtes vous sur ?">Supprimer</a>
   </div>
+  </div>
+
 </div>
 </div>
 </main>

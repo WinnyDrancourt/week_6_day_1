@@ -1,13 +1,8 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<h1 class="text-center">Tous les Users</h1>
-<div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <%= link_to "Cree un utilisateur", new_user_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %>
-            </div>
+<main>
+<h1 class="text-center">Tous les utilisateurs</h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-center  mb-5">
+<h2><%= link_to "Créer un utilisateur", new_user_path, class: "btn bouton-gossip justify-content-md-end me-md-2" %></h2>
+</div>
 
 <div class="row col-10 row-gossip">
   <% @users.each do |user| %>
